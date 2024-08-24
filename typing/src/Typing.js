@@ -12,7 +12,7 @@ const Typing = () => {
         let selectedWords = '';
 
         if(wordCount>100){
-            setWordCount(100)
+            setWordCount(Number(100))
         }
 
         for (let i = 0; i < wordCount; i++) {
