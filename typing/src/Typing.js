@@ -11,6 +11,10 @@ const Typing = () => {
         const wordsArray = paragraph[0].split(' ');
         let selectedWords = '';
 
+        if(wordCount>100){
+            setWordCount(100)
+        }
+
         for (let i = 0; i < wordCount; i++) {
             const index = Math.floor(Math.random() * wordsArray.length);
             selectedWords += wordsArray[index] + ' ';
