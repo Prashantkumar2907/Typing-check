@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './typing.css'
-import TypingColor from './TypingColor';
+import TypingColor from './typingcolor';
 const Typing = () => {
     const paragraph = ["Sunlight whispers gently across the vibrant tapestry, where melodies of emerald dreams dance alongside fleeting shadows. The mosaic of colors pirouettes gracefully, embracing the warmth of a thousand forgotten tales. Raindrops, like crystal beads, scatter across the horizon, weaving a symphony of ethereal echoes. Beneath the canopy of ancient oaks, whispers of the past intertwine with the heartbeat of the earth, creating a serene rhythm that lulls the soul into a timeless reverie. Amidst this delicate balance, the world breathes in harmony, where every moment is a fleeting brushstroke on the canvas of existence."];
 
@@ -31,8 +31,7 @@ const Typing = () => {
 
     const mistakescount = () =>{
            let mistakes = 0
-
-           generatedText.split('').map((char,index)=>{
+           generatedText.split('').forEach((char,index)=>{
             if(index<userInput.length){
                 if(char!==userInput[index])mistakes++
             }
