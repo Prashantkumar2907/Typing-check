@@ -13,7 +13,7 @@ body{
     display: grid;
     margin-left: 10%;
     margin-right: 10%;
-    margin-top: 15%;
+    margin-top: 10%;
     color: rgb(192, 185, 185);
     /* box-shadow: 0 16 16 white; */
     /* box-shadow: rgba(254, 252, 252, 0.24) 0px 3px 8px; */
@@ -60,4 +60,8 @@ body{
     margin-top: 5%;
     background-color: rgb(176, 186, 197);
     color:black
+}
+
+li{
+    display: flex;
 }

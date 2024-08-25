@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './typing.css'
+import TypingColor from './TypingColor';
 const Typing = () => {
     const paragraph = ["Sunlight whispers gently across the vibrant tapestry, where melodies of emerald dreams dance alongside fleeting shadows. The mosaic of colors pirouettes gracefully, embracing the warmth of a thousand forgotten tales. Raindrops, like crystal beads, scatter across the horizon, weaving a symphony of ethereal echoes. Beneath the canopy of ancient oaks, whispers of the past intertwine with the heartbeat of the earth, creating a serene rhythm that lulls the soul into a timeless reverie. Amidst this delicate balance, the world breathes in harmony, where every moment is a fleeting brushstroke on the canvas of existence."];
 
@@ -28,19 +29,18 @@ const Typing = () => {
         setUserInput(e.target.value);
     };
 
-    const renderTextWithColors = () => {
-        return generatedText.split('').map((char, index) => {
-            let color;
-            if (index < userInput.length) {
-                color = char === userInput[index] ? 'green' : 'red';
+    const mistakescount = () =>{
+           let mistakes = 0
+
+           generatedText.split('').map((char,index)=>{
+            if(index<userInput.length){
+                if(char!==userInput[index])mistakes++
             }
-            return (
-                <span key={index} style={{ color: color }}>
-                    {char}
-                </span>
-            );
-        });
-    };
+           })
+
+           return mistakes
+    }
+
 
     return (
         <div>
@@ -58,7 +58,7 @@ const Typing = () => {
                 </div>
                 <button className='buttonf' onClick={handleInputArea}>Generate Text</button>
                 <div className="generated-text" style={{ whiteSpace: 'pre-wrap' }}>
-                    {renderTextWithColors()}
+                    <TypingColor generatedText={generatedText} userInput={userInput}/>
                 </div>
                 <textarea
                     rows={5}
@@ -67,6 +67,12 @@ const Typing = () => {
                     onChange={handleUserInput}
                     placeholder="Start typing..."
                 />
+                <ul className='list'>
+                    <li>
+                        <p>Mistakes:</p>
+                        <span>{mistakescount()}</span>
+                    </li>
+                </ul>
             </div>
         </div>
     );
